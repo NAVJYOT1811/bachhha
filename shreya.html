@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Bachcha ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#f7e7ea;
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.container{
+position:relative;
+}
+
+img{
+width:220px;
+border-radius:20px;
+margin-bottom:20px;
+}
+
+h1{
+font-size:42px;
+margin-bottom:10px;
+color:#222;
+}
+
+p{
+font-size:20px;
+margin-bottom:25px;
+color:#444;
+}
+
+.buttons{
+position:relative;
+height:120px;
+}
+
+button{
+padding:14px 35px;
+font-size:22px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+#yesBtn{
+background:white;
+margin-right:20px;
+}
+
+#noBtn{
+background:white;
+position:absolute;
+}
+
+.success{
+display:none;
+flex-direction:column;
+align-items:center;
+}
+
+.success h1{
+font-size:55px;
+color:#ff4081;
+}
+
+.success p{
+font-size:28px;
+}
+
+.hearts{
+position:fixed;
+font-size:30px;
+animation:float 4s linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="main">
+
+<img src="https://media.tenor.com/7sA4w8wz6aAAAAAC/cute-cat.gif">
+
+<h1 id="title">Do you love me, Bachcha? 🥺❤️</h1>
+
+<p id="msg">Please answer honestly 😌</p>
+
+<div class="buttons">
+
+<button id="yesBtn">Yes ❤️</button>
+
+<button id="noBtn">No 😏</button>
+
+</div>
+
+</div>
+
+<div class="success" id="success">
+
+<h1>YAYYYY ❤️😭</h1>
+
+<p>I knew it Bachcha!! 💖💖💖</p>
+
+<h2>Shreya + ❤️ = Forever</h2>
+
+</div>
+
+<script>
+
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const msg = document.getElementById("msg");
+
+const messages = [
+"Think again 😒",
+"Think twice 😏",
+"Are you sure? 🥺",
+"Last chance 😭",
+"Bachcha please 😭💖",
+"You can't escape 😈",
+"Still no? 😭",
+"I'll keep asking 😤❤️"
+];
+
+let count = 0;
+let yesScale = 1;
+
+noBtn.addEventListener("click", () => {
+
+msg.innerText = messages[count % messages.length];
+
+count++;
+
+yesScale += 0.25;
+yesBtn.style.transform = `scale(${yesScale})`;
+
+const maxX = window.innerWidth - 150;
+const maxY = window.innerHeight - 100;
+
+const randomX = Math.random() * maxX;
+const randomY = Math.random() * maxY;
+
+noBtn.style.left = randomX + "px";
+noBtn.style.top = randomY + "px";
+
+});
+
+yesBtn.addEventListener("click", () => {
+
+document.getElementById("main").style.display = "none";
+document.getElementById("success").style.display = "flex";
+
+for(let i=0;i<50;i++){
+
+let heart = document.createElement("div");
+
+heart.innerHTML = "❤️";
+heart.classList.add("hearts");
+
+heart.style.left = Math.random()*100+"vw";
+heart.style.animationDuration =
+(Math.random()*3+2)+"s";
+
+document.body.appendChild(heart);
+}
+
+});
+
+</script>
+
+</body>
+</html>
